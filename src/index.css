@@ -12,6 +12,10 @@ body {
   margin: 0;
 }
 
+#root {
+  height: 100%;
+}
+
 .grid-container {
   display: grid;
   grid-template-areas: 
@@ -153,3 +157,11 @@ a:hover {
   top: 1.5rem;
 }
 
+/* ProductDetails */
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
