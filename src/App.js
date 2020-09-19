@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import data from './data'
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
+import Home from './components/Home'
+import ProductDetails from './components/ProductDetails'
 
 function App() {
 
@@ -23,8 +25,8 @@ function App() {
           <div className="brand">
             <button onClick={openMenu}>
               &#9776;
-                </button>
-            <a href="index.html">Home</a>
+              </button>
+            <Link to="/">E-commerce store</Link>
           </div>
           <div className="header-links">
             <a href="cart.html">Cart</a>
@@ -44,27 +46,14 @@ function App() {
           </aside>
 
         </header>
-        <aside>
-          Shopping Categories
-        </aside>
+      
         <main className="main">
           <div className="content">
-            <ul className="products">
-              {
-                data.products.map(product =>
-                  <li>
-                    <div className="product">
-                      <img className="product-image" src={product.image} alt={product.name} />
-                      <div className="product-name">
-                        <a href="product.html">{product.name}</a>
-                      </div>
-                      <div className="product-brand">{product.brand}</div>
-                      <div className="product-price">${product.price}</div>
-                      <div className="product-rating">{product.rating} Stars({product.numReviews} Reviews)</div>
-                    </div>
-                  </li>)
-              }
-            </ul>
+              {/* <Route path="/" component={ Sidebar } /> */}
+              <Route exact path="/product/:id" component={ProductDetails} />
+              <Route exact path="/" component={ Home } />
+
+
           </div>
         </main>
         <footer className="footer">
