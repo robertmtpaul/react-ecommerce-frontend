@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import data from './data'
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import Home from './components/Home'
 import ProductDetails from './components/ProductDetails'
@@ -57,7 +56,7 @@ function App() {
           </div>
         </main>
         <footer className="footer">
-          All rights reserved.
+          Robert Paul - rob@glo.id.au
         </footer>
       </div>
     </Router>
