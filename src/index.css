@@ -27,29 +27,6 @@ body {
   height: 100%;
 }
 
-.header {
-  grid-area: header;
-  background-color: #203040;
-  color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.brand a {
-  color: #ffffff;
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.header-links a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.header-links a:hover{
-  color: #ffffff;
-}
 
 .main {
   grid-area: main;
@@ -155,17 +132,4 @@ a:hover {
   position: absolute;
   right: .5rem;
   top: 1.5rem;
-}
-
-/* ProductDetails */
-
-.details {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.details-image {
-  flex: 2 1 
 }
