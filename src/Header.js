@@ -13,8 +13,8 @@ function Header() {
                 <img className="logo" src="./images/logo.png" />
             </Link>
             <div>
-                <p>Why hello there, [username]</p>
                 {/* TODO : conditional logic to show currentUser */}
+                <p>Why hello there, [currentUser]</p>
             </div>
             <div className="header-links">
                 <a href="cart.html">Cart |</a>

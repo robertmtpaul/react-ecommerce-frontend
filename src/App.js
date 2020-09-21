@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.css';
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
+
+// import website components
 import Home from './components/Home'
-import ProductDetails from './components/ProductDetails'
 import Header from './Header'
+import ProductDetails from './components/ProductDetails'
 
 function App() {
 
@@ -22,7 +24,6 @@ function App() {
 
     <Router>
       <div className="grid-container">
-        {/* TODO: clean up this code  */}
         <Route path="/" component={Header} />
         <main className="main">
           <div className="content">
