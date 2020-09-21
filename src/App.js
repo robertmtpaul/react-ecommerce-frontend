@@ -7,15 +7,16 @@ import Header from './Header'
 
 function App() {
 
+  // TODO : implement with fixed sidebar.
   // Open the sidebar with categories with vanillaJS DOM manip.
-  const openMenu = () => {
-    document.querySelector(".sidebar").classList.add("open");
-  }
+  // const openMenu = () => {
+  //   document.querySelector(".sidebar").classList.add("open");
+  // }
 
-  // close the sidebar with categories.
-  const closeMenu = () => {
-    document.querySelector(".sidebar").classList.remove("open")
-  }
+  // // close the sidebar with categories.
+  // const closeMenu = () => {
+  //   document.querySelector(".sidebar").classList.remove("open")
+  // }
 
   return (
 

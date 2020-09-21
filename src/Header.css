@@ -6,7 +6,11 @@ nav {
     justify-content: space-between;
     align-items: center;
   }
-  
+
+  nav .logo {
+      width: 20rem;
+  }
+
   .brand a {
     color: #ffffff;
     font-size: 2.5rem;
@@ -19,6 +23,6 @@ nav {
   }
   
   .header-links a:hover{
-    color: #ffffff;
+    color: yellow;
   }
   
