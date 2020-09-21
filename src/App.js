@@ -3,7 +3,7 @@ import './App.css';
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
 
 // import website components
-import Home from './components/Home'
+import ProductIndex from './components/ProductIndex'
 import Header from './Header'
 import ProductDetails from './components/ProductDetails'
 
@@ -31,7 +31,7 @@ function App() {
             {/* <Route path="/" component={ Sidebar } /> */}
 
             <Route exact path="/product/:id" component={ProductDetails} />
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={ProductIndex} />
           </div>
         </main>
         <footer className="footer">

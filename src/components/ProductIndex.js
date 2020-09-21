@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
-function Home (props) {
-
+function ProductIndex (props) {
+    // put the product and setProduct into useState
     const [ products, setProduct ] = useState ([]);
+
     const PRODUCTS_BASE_URL = "http://localhost:1337/products"
     
     useEffect(() => {
@@ -43,4 +44,4 @@ function Home (props) {
     
 }
 
-export default Home;
+export default ProductIndex;
