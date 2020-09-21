@@ -32,11 +32,10 @@ function App() {
 
             <Route exact path="/product/:id" component={ProductDetails} />
             <Route exact path="/" component={Home} />
-
           </div>
         </main>
         <footer className="footer">
-          Robert Paul - rob@glo.id.au
+          Final project at General Assembly - by Robert Paul - rob@glo.id.au
         </footer>
       </div>
     </Router>
