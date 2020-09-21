@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import Home from './components/Home'
 import ProductDetails from './components/ProductDetails'
+import Header from './Header'
 
 function App() {
 
@@ -20,38 +21,15 @@ function App() {
 
     <Router>
       <div className="grid-container">
-        <header className="header">
-          <div className="brand">
-            <button onClick={openMenu}>
-              &#9776;
-              </button>
-            <Link to="/">E-commerce store</Link>
-          </div>
-          <div className="header-links">
-            <a href="cart.html">Cart</a>
-            <a href="signin.html">Sign in </a>
-          </div>
-          <aside className="sidebar">
-            <h3>Shopping Categories</h3>
-            <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-            <ul>
-              <li>
-                <a href="index.html">Electronics</a>
-              </li>
-              <li>
-                <a href="index.html">Clothes</a>
-              </li>
-            </ul>
-          </aside>
-
-        </header>
-      
+        {/* TODO: clean up this code  */}
+        <Route path="/" component={Header} />
         <main className="main">
           <div className="content">
-              {/* <Route path="/" component={ Sidebar } /> */}
-              <Route exact path="/product/:id" component={ProductDetails} />
-              <Route exact path="/" component={ Home } />
+            {/* TODO: SIDEBAR COMPONENT */}
+            {/* <Route path="/" component={ Sidebar } /> */}
 
+            <Route exact path="/product/:id" component={ProductDetails} />
+            <Route exact path="/" component={Home} />
 
           </div>
         </main>

@@ -1,7 +1,7 @@
 import React from 'react';
 import data from '../data';
 import { Link } from 'react-router-dom'
-import ".ProductDetails.css"
+import "../ProductDetails.css"
 
 function ProductDetails (props) {
     // Debugging: See what the ID of the current item is
