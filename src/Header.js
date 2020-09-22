@@ -8,7 +8,7 @@ function Header() {
 
     return (
 
-        <nav class="header">
+        <nav className="header">
             {/* search box */}
             {/* 3 links */}
             <Link to="/" className="header_link">
@@ -22,7 +22,7 @@ function Header() {
                 <Link to="/login" className="header_link">
                     <div className="header_option">
                         <span className="header_optionLineOne">Hello User</span>
-                        <span clasName="header_optionLineTwo">Sign in</span>
+                        <span className="header_optionLineTwo">Sign in</span>
                     </div>
                 </Link>
                 <Link to="/checkout" className="header_link">
