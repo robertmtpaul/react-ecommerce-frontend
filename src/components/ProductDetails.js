@@ -3,7 +3,7 @@ import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import "../ProductDetails.css"
 import axios from 'axios';
 
-const PRODUCTS_BASE_URL = "http://localhost:1337/products"
+const PRODUCTS_BASE_URL = "https://node-ecommerce-backend.herokuapp.com/products"
 
 
 // TODO: refactor as function and use Hooks
@@ -17,6 +17,7 @@ class ProductDetails extends React.Component {
             brand: '',
             rating: '',
             numReviews: '',
+            description: '',
         },
     }; // state
 
@@ -57,7 +58,7 @@ class ProductDetails extends React.Component {
                             </li>
                             <li>
                                 <p>Description:</p>
-                                {this.state.data.name}
+                                {this.state.data.description}
                             </li>
                         </ul>
                     </div>

@@ -7,7 +7,7 @@ function ProductIndex (props) {
     // put the product and setProduct into useState
     const [ products, setProduct ] = useState ([]);
 
-    const PRODUCTS_BASE_URL = "http://localhost:1337/products"
+    const PRODUCTS_BASE_URL = "https://node-ecommerce-backend.herokuapp.com/products"
     
     useEffect(() => {
       const getProducts = async () => {
