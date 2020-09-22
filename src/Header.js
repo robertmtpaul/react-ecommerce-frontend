@@ -22,6 +22,7 @@ function Header() {
                 <Link to="/login" className="header_link">
                     <div className="header_option">
                         <span className="header_optionLineOne">Hello User</span>
+                        {/* TODO : finish login page */}
                         <span className="header_optionLineTwo">Sign in</span>
                     </div>
                 </Link>
