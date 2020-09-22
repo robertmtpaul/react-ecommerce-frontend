@@ -12,7 +12,7 @@ function Header() {
             {/* search box */}
             {/* 3 links */}
             <Link to="/" className="header_link">
-                <img className="header_logo" src="./images/logo.png" />
+                <img className="header_logo" src="https://leanfrontiers.com/wp-content/uploads/2018/12/logo-placeholder-png.png" />
             </Link>
             <div className="header_search">
                 <input type="text" className="header_searchInput" />
