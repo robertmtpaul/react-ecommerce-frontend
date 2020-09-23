@@ -14,6 +14,7 @@ function ProductIndex (props) {
     useEffect(() => {
       const fetchProducts = async () => {
         const { data } = await axios.get(PRODUCTS_BASE_URL)
+        // Set the data retrieved vai axios request into state in setProduct
         setProduct(data);
       }
       fetchProducts(); 
@@ -24,8 +25,7 @@ function ProductIndex (props) {
 
     return <ul className="products">
     {
-      // 
-      
+      // Map through products in state, 
       products.map(product =>
         //set key to something unique like productID to satisfy map function
         <li key = { product._id }>

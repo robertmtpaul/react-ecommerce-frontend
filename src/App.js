@@ -16,11 +16,12 @@ class App extends React.Component {
     cart: [],
   }
   
-  addToCart = (productId, qty) => {
-    console.log('in add to cart: ', productId, qty )
+  addToCart = (productId, qty, price) => {
+    console.log('in add to cart: ', productId, qty, price )
     // put what is in the cart in state
     // '...'retains what already in cart
-    this.setState({cart: [ ...this.state.cart, {productId, qty } ]})
+    this.setState({cart: [ ...this.state.cart, {productId, qty, price } ]})
+    // 
   }
 
 
@@ -72,22 +73,29 @@ class App extends React.Component {
           <Route exact path="/login" render={(props) => <Login {...props} onLogin={this.performLogin} />  } />
           <main className="main">
           <div>
+            {/* TODO1: move shopping cart to the navbar/right hand side */}
+            {/* TODO2: Use product name instead of ID */}
             Shopping cart
             {
-              this.state.cart.map(c => <p>{c.productId}: {c.qty}</p>)
+              this.state.cart.map(c => <p>{c.productId}: {c.qty}, {c.price}</p>)
             }
+            {/* TODO: use CSS to create break. */}
+            <br/> 
+            <Link to="/checkout">Checkout</Link>
+
           </div>
             <div className="content">
-              {/* TODO: SIDEBAR COMPONENT */}
-              {/* <Route path="/" component={ Sidebar } /> */}
               <Route exact path="/" component={ProductIndex} />
+              
               <Route exact path="/products/:id" render={(props) => 
                 <ProductDetails 
-                  {...props} 
-                  onAddToCart={this.addToCart} 
-                  cart={this.state.cart}
+                {...props} 
+                onAddToCart={this.addToCart} 
+                cart={this.state.cart}
                 />  
-              } />
+              } 
+              />
+              <Route path="/checkout" />
             </div>
           </main>
           <footer className="footer">
