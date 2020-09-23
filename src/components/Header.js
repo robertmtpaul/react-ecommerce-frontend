@@ -1,32 +1,43 @@
 import React from "react";
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
-import "./Header.css"
+import "../Header.css"
 import SearchIcon from "@material-ui/icons/Search"
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket"
 
-function Header() {
+function Header(props) {
 
     return (
 
         <nav className="header">
             {/* search box */}
             {/* 3 links */}
-            <Link to="/" className="header_link">
+            <Link to="/" >
                 <img className="header_logo" src="https://leanfrontiers.com/wp-content/uploads/2018/12/logo-placeholder-png.png" />
             </Link>
             <div className="header_search">
-                <input type="text" className="header_searchInput" />
+                <input type="text" />
                 <SearchIcon className="header_searchIcon" />
             </div>
             <div className="header_nav">
-                <Link to="/login" className="header_link">
-                    <div className="header_option">
-                        <span className="header_optionLineOne">Hello User</span>
-                        {/* TODO : finish login page */}
-                        <span className="header_optionLineTwo">Sign in</span>
-                    </div>
-                </Link>
-                <Link to="/checkout" className="header_link">
+                {/* use ternary to show links depending on whether user logged in*/}
+                { 
+                 props.currentUser.name !== undefined  
+                 ? 
+                 ( 
+                  <span>
+                    <span>Hello {props.currentUser.name } </span>
+                    {/* perform logout function on click and redirect to login page */}
+                    <a href="#" onClick={(e) => {props.onLogout(e); props.history.push('/login')} }>Logout </a>
+                  </span>    
+                 ) 
+                 : 
+                 (
+                    <Link to="/login">
+                        <span>Sign in</span>
+                    </Link>
+                 )
+                }                       
+                <Link to="/checkout">
                     <div className="header_optionBasket"></div>
                         {/* Shopping basket icon */}
                         <ShoppingBasketIcon />

@@ -7,15 +7,16 @@ function ProductIndex (props) {
     // put the product and setProduct into useState
     const [ products, setProduct ] = useState ([]);
 
-    const PRODUCTS_BASE_URL = "https://node-ecommerce-backend.herokuapp.com/products"
+    const PRODUCTS_BASE_URL = "http://localhost:1337/products"
+
+    // const HEROKU_PRODUCTS_BASE_URL = "https://node-ecommerce-backend.herokuapp.com/products"
     
     useEffect(() => {
-      const getProducts = async () => {
-        // { data } is the data being fetched from the node backend data.js file.
+      const fetchProducts = async () => {
         const { data } = await axios.get(PRODUCTS_BASE_URL)
         setProduct(data);
       }
-      getProducts(); 
+      fetchProducts(); 
       return () => {
         // cleanup
       }
@@ -24,6 +25,7 @@ function ProductIndex (props) {
     return <ul className="products">
     {
       // 
+      
       products.map(product =>
         //set key to something unique like productID to satisfy map function
         <li key = { product._id }>
