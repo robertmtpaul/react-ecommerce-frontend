@@ -12,12 +12,17 @@ import axios from 'axios'
 
 class App extends React.Component {
   state = {
-    user: {}
+    user: {},
+    cart: [],
   }
   
-  //child component login  ... \:
+  addToCart = (productId, qty) => {
+    console.log('in add to cart: ', productId, qty )
+    // put what is in the cart in state
+    // '...'retains what already in cart
+    this.setState({cart: [ ...this.state.cart, {productId, qty } ]})
+  }
 
-  //test unsuccessful login.
 
   componentDidMount() {
     // TODO1   : check if local storage token and user is set
@@ -52,7 +57,7 @@ class App extends React.Component {
       delete axios.defaults.headers.common.Authorization
       localStorage.removeItem("token")
       localStorage.removeItem("user")
-      // set the user staet as empty object
+      // set the user state as empty object
       this.setState({ user: {} })
     } 
     //localStorage.removeItem("jwt")
@@ -63,15 +68,26 @@ class App extends React.Component {
       
       <Router>
         <div className="grid-container">
-          
           <Route path="/" render={(props) => <Header {...props} onLogout={this.performLogout} currentUser={this.state.user} />  } />
           <Route exact path="/login" render={(props) => <Login {...props} onLogin={this.performLogin} />  } />
           <main className="main">
+          <div>
+            Shopping cart
+            {
+              this.state.cart.map(c => <p>{c.productId}: {c.qty}</p>)
+            }
+          </div>
             <div className="content">
               {/* TODO: SIDEBAR COMPONENT */}
               {/* <Route path="/" component={ Sidebar } /> */}
               <Route exact path="/" component={ProductIndex} />
-              <Route exact path="/product/:id" component={ProductDetails} />
+              <Route exact path="/products/:id" render={(props) => 
+                <ProductDetails 
+                  {...props} 
+                  onAddToCart={this.addToCart} 
+                  cart={this.state.cart}
+                />  
+              } />
             </div>
           </main>
           <footer className="footer">
@@ -84,18 +100,3 @@ class App extends React.Component {
   }
 }
 export default App;
-
-
-  // computed: {
-    //   isAdmin() {
-    //     return this.currentUser.type === 'admin'
-    //   },
-    //     isUser(){
-    //       return this.state.user.type === 'user'
-    //     },
-
-    //     isLoggedIn(){
-    //       return this.currentUser.name !== undefined
-    //     } // isLoggedIn()
-
-    // },

@@ -30,11 +30,11 @@ function ProductIndex (props) {
         //set key to something unique like productID to satisfy map function
         <li key = { product._id }>
           <div className="product">
-            <Link to={`${/product/}${product._id}`}>
+            <Link to={`${/products/}${product._id}`}>
               <img className="product-image" src={product.image} alt={product.name} />
             </Link>
             <div className="product-name">
-              <Link to={`${/product/}${product._id}`}>{product.name}</Link>
+              <Link to={`${/products/}${product._id}`}>{product.name}</Link>
             </div>
             <div className="product-brand">{product.brand}</div>
             <div className="product-price">${product.price}</div>

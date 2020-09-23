@@ -20,14 +20,11 @@ class ProductDetails extends React.Component {
             numReviews: '',
             description: '',
         },
+        qty: 1
     }; // state
 
     componentDidMount() {
-        axios
-            .get(
-                `${PRODUCTS_BASE_URL}/${this.props.match.params.id
-                }.json`
-            )
+        axios.get(`${PRODUCTS_BASE_URL}/${this.props.match.params.id}`)
             .then(data => {
                 console.log(data);
                 this.setState({ data: data.data });
@@ -36,7 +33,28 @@ class ProductDetails extends React.Component {
 
     } // componentDidMount
 
+    addToCart = () =>  {
+        console.log('button clicked : contents')
+        this.props.onAddToCart(this.props.match.params.id, this.state.qty)
+    }
+
     render() {
+        // TODO: save
+        const productId = this.props.match.params.id
+        let cartQty = 0;
+        
+        let checkCart = () => {
+        // loop through every item in cart
+        this.props.cart.forEach(cartProduct => {
+            // check productId's value of each obj against current id in state
+            console.log('product being compared:' , cartProduct);
+            if( cartProduct === productId ){
+                cartQty += cartProduct.qty
+            }
+        });
+        }
+        // if match, add OBJ qty to total qty
+
         return (
             <div className="details">
                 <div className="back">
@@ -65,6 +83,13 @@ class ProductDetails extends React.Component {
                     </div>
                 </div>
                 <div className="details-action">
+                    {
+                        cartQty > 0 
+                        && 
+                        (
+                            <div>You have this amount in cart....{cartQty}</div>
+                        )
+                    }
                     <ul>
                         <li>
                             Price: <strong>${this.state.data.price}</strong>
@@ -73,7 +98,9 @@ class ProductDetails extends React.Component {
                             Status: {this.state.data.status}
                         </li>
                         <li>
-                            Qty: <select>
+                            {/* when button clicked, uses event to save quantity into state */}
+                            Qty: <select onChange={ (e) => this.setState({ qty: parseInt(e.target.value) }) 
+                        } >
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -82,7 +109,8 @@ class ProductDetails extends React.Component {
                             </select>
                         </li>
                         <li>
-                            <button className="button">Add to cart</button>
+                            {/* gives name of the function to run later on time of click */}
+                            <button className="button" onClick= {this.addToCart}>Add to cart</button>
                         </li>
                     </ul>
                 </div>
@@ -95,66 +123,5 @@ class ProductDetails extends React.Component {
 
 } // ProductDetails class
 
-
- 
-// function ProductDetails (props) {
-//     // Debugging: See what the ID of the current item is
-//     console.log(props.match.params.id)
-//     // print out the details of the 
-
-
-//     const product = data.products.find(item => item._id === props.match.params.id)
-//     return <div className="details">
-//             <div className="back">
-//                 <Link to="/">Back</Link>
-//             </div>
-//             <div className="details">
-//                 <div className="details-image">
-//                     <img src={product.image} alt={product.name}/>
-//                 </div>
-//                 <div className="details-info">
-//                     <ul>
-//                         <li>
-//                             <h4>{product.name}</h4>
-//                         </li>
-//                         <li>
-//                             {product.rating} Stars ({product.numReviews} Reviews )
-//                         </li>
-//                         <li>
-//                             <strong>Price: ${product.price} </strong>
-//                         </li>
-//                         <li>
-//                             <p>Description:</p>
-//                             { product.description }
-//                         </li>
-//                     </ul>
-//                 </div>
-//             </div>
-//             <div className="details-action">
-//                 <ul>
-//                     <li>
-//                         Price: <strong>${product.price}</strong>
-//                     </li>
-//                     <li>
-//                         Status: {product.status}
-//                     </li>
-//                     <li>
-//                         Qty: <select>
-//                             <option>1</option>
-//                             <option>2</option>
-//                             <option>3</option>
-//                             <option>4</option>
-//                             <option>5</option>
-//                         </select>
-//                     </li>
-//                     <li>
-//                         <button className="button">Add to cart</button>
-//                     </li>
-//                 </ul>
-//             </div>
-//         </div>
-
-
-// } //Product details FUNCTION
 
 export default ProductDetails;
