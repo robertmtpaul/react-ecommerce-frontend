@@ -8,7 +8,7 @@ function CartItem(props) {
             {props.itemName}, x{props.itemQty}
             <br />
             <img src={props.itemImage} className="checkout-thumbnail" />
-            <button>{removeItem()}Remove items</button>
+            <button>{props.removeItem()}Remove items</button>
         </div>
     )
 }

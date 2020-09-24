@@ -27,7 +27,7 @@ class Cart extends React.Component {
         this.props.history.push('/')
     }
     
-    removeItem() {
+    removeItem = () => {
         console.log('checking if deleted', this.props.qty)
         // this.props.product.item
     }
@@ -45,7 +45,7 @@ class Cart extends React.Component {
                                 itemName={c.product.name}
                                 itemQty={c.qty}
                                 itemImage={c.product.image}
-                                itemButton
+                                removeItem={this.removeItem}
                             />
                         ) 
                     }
