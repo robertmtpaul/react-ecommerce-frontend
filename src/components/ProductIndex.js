@@ -2,18 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import {PRODUCTS_URL} from '../constants'
 
 function ProductIndex (props) {
     // put the product and setProduct into useState
     const [ products, setProduct ] = useState ([]);
-
-    const PRODUCTS_BASE_URL = "http://localhost:1337/products"
-
-    // const HEROKU_PRODUCTS_BASE_URL = "https://node-ecommerce-backend.herokuapp.com/products"
     
     useEffect(() => {
       const fetchProducts = async () => {
-        const { data } = await axios.get(PRODUCTS_BASE_URL)
+        const { data } = await axios.get(PRODUCTS_URL)
         // Set the data retrieved vai axios request into state in setProduct
         setProduct(data);
       }
