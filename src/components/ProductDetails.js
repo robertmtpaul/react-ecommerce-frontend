@@ -95,7 +95,7 @@ class ProductDetails extends React.Component {
                     </div>
                 </div>
                 <div className="details-action">
-                    {cartQty > 0 && <div>You have this amount in cart....{cartQty}</div>}
+                    {cartQty > 0 && <div>You have got {cartQty} of this item in your cart so far.</div>}
                     <ul>
                         <li>
                             Price: <strong>${this.state.data.price}</strong>
@@ -103,7 +103,7 @@ class ProductDetails extends React.Component {
                         <li>Status: {this.state.data.status}</li>
                         <li>
                             {/* when button clicked, uses event to save quantity into state */}
-              Qty:{" "}
+                                Qty:{" "}
                             <select
                                 onChange={e => this.setState({ qty: parseInt(e.target.value) })}
                             >

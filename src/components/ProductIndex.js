@@ -11,6 +11,7 @@ function ProductIndex (props) {
 
     // const HEROKU_PRODUCTS_BASE_URL = "https://node-ecommerce-backend.herokuapp.com/products"
     
+    // TODO: add explanatory comments
     useEffect(() => {
       const fetchProducts = async () => {
         const { data } = await axios.get(PRODUCTS_BASE_URL)

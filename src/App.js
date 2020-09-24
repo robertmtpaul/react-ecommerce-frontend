@@ -7,6 +7,7 @@ import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import ProductIndex from './components/ProductIndex'
 import Header from './components/Header'
 import ProductDetails from './components/ProductDetails'
+import Checkout from './components/Checkout'
 import Login from './components/Login'
 import axios from 'axios'
 
@@ -95,7 +96,8 @@ class App extends React.Component {
                 />  
               } 
               />
-              <Route path="/checkout" />
+              <Route path="/checkout" component ={Checkout}>
+              </Route>
             </div>
           </main>
           <footer className="footer">
