@@ -6,6 +6,7 @@ import { Route, Link, HashRouter as Router } from 'react-router-dom';
 // import website components
 import ProductIndex from './components/ProductIndex'
 import Header from './components/Header'
+import Checkout from './components/Checkout'
 import ProductDetails from './components/ProductDetails'
 import Login from './components/Login'
 import axios from 'axios'
@@ -14,19 +15,24 @@ class App extends React.Component {
   state = {
     user: {},
     cart: [],
+    cartCount: 0,
   }
   
-  addToCart = (productId, qty, price) => {
-    console.log('in add to cart: ', productId, qty, price )
+  addToCart = (product, qty) => {
+    console.log('in add to cart: ', product, qty )
     // put what is in the cart in state
     // '...'retains what already in cart
-    this.setState({cart: [ ...this.state.cart, {productId, qty, price } ]})
+    //set a variable that keeps an updated version of the cart i.e. 
+    const newCart = [ ...this.state.cart, {product, qty } ];
+    console.log('quantities' , this.state.cartCount, qty)
     // 
+    this.setState({ cart: newCart, cartCount: this.state.cartCount + qty })
+    localStorage.setItem('cart', JSON.stringify(newCart))
   }
 
 
   componentDidMount() {
-    // TODO1   : check if local storage token and user is set
+    // Check if local storage token and user is set
     const token = localStorage.getItem("token")
     const user = localStorage.getItem("user")
     console.log(token)
@@ -37,7 +43,13 @@ class App extends React.Component {
       this.setState({ user: JSON.parse(user)} );
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     }
-    // 
+    // Load shopping cart from local storage if available
+    // if not null, assume ... (?)
+    const cart = localStorage.getItem( 'cart')
+    if (cart !== null) {
+      // JSON.parse gets the string back and turns into array of objects/
+      this.setState({cart: JSON.parse(cart)})
+    } 
   }
 
   // passes as arguments token and user that backend sent
@@ -52,6 +64,10 @@ class App extends React.Component {
     // local storage can only set strings, can't set complex items, so needs to have the JSON stringified.
     localStorage.setItem( 'user', JSON.stringify(user) )
   }
+
+  // cart calculator
+  // always give total number of items 
+  // loop to add all cart quantities.
 
     performLogout = ( event )=> {
       event.preventDefault()
@@ -69,20 +85,12 @@ class App extends React.Component {
       
       <Router>
         <div className="grid-container">
-          <Route path="/" render={(props) => <Header {...props} onLogout={this.performLogout} currentUser={this.state.user} />  } />
+          <Route path="/" render={(props) => <Header {...props} onLogout={this.performLogout} currentUser={this.state.user} cartCount={this.state.cartCount}/>  } />
           <Route exact path="/login" render={(props) => <Login {...props} onLogin={this.performLogin} />  } />
           <main className="main">
           <div>
-            {/* TODO1: move shopping cart to the navbar/right hand side */}
-            {/* TODO2: Use product name instead of ID */}
-            Shopping cart
-            {
-              this.state.cart.map(c => <p>{c.productId}: {c.qty}, {c.price}</p>)
-            }
-            {/* TODO: use CSS to create break. */}
+           
             <br/> 
-            <Link to="/checkout">Checkout</Link>
-
           </div>
             <div className="content">
               <Route exact path="/" component={ProductIndex} />
@@ -95,7 +103,7 @@ class App extends React.Component {
                 />  
               } 
               />
-              <Route path="/checkout" />
+          <Route exact path="/checkout" render={(props) => <Checkout {...props} cart={this.state.cart} />  }  /> 
             </div>
           </main>
           <footer className="footer">

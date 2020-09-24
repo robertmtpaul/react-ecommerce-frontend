@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import '../Login.css';
-import { Route, Link, HashRouter as Router } from 'react-router-dom';
+import { Link, HashRouter as Router } from 'react-router-dom';
 import axios from 'axios';
-
-const LOGIN_URL = ('http://localhost:1337/login');
+import {LOGIN_URL} from '../constants'
 
 class Login extends React.Component {
     // login state 
@@ -74,8 +73,6 @@ class Login extends React.Component {
 
                     <button className="login_signInButton">Sign in</button>
                 </form>
-
-                {/* TODO : create register button/API functionality */}
 
             </div>
         </div>

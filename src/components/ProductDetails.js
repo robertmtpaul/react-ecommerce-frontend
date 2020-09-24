@@ -2,11 +2,8 @@ import React from "react";
 import { Route, Link, HashRouter as Router } from "react-router-dom";
 import "../ProductDetails.css";
 import axios from "axios";
+import {PRODUCTS_URL} from '../constants'
 
-const PRODUCTS_BASE_URL = "http://localhost:1337/products";
-
-// const HEROKU_PRODUCTS_BASE_URL =
-    // "https://node-ecommerce-backend.herokuapp.com/products";
 let cartQty = 0;
 
 class ProductDetails extends React.Component {
@@ -26,7 +23,7 @@ class ProductDetails extends React.Component {
 
     componentDidMount() {
         axios
-            .get(`${PRODUCTS_BASE_URL}/${this.props.match.params.id}`)
+            .get(`${PRODUCTS_URL}/${this.props.match.params.id}`)
             .then(data => {
                 console.log(data);
                 this.setState({ data: data.data });
@@ -37,7 +34,7 @@ class ProductDetails extends React.Component {
     addToCart = () => {
         console.log('button clicked : contents')
         // On button click, adds the item from the product details page and passes the ID passed from the parent component App.js
-        this.props.onAddToCart(this.props.match.params.id, this.state.qty, this.state.data.price)
+        this.props.onAddToCart(this.state.data, this.state.qty)
     }
 
     checkCart() {

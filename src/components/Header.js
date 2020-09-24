@@ -3,7 +3,6 @@ import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import "../Header.css"
 import SearchIcon from "@material-ui/icons/Search"
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket"
-
 function Header(props) {
 
     return (
@@ -42,7 +41,7 @@ function Header(props) {
                         {/* Shopping basket icon */}
                         <ShoppingBasketIcon />
                         {/* Number items in the basket */}
-                        <span className="header_basketCount">0</span>
+                        <span className="header_basketCount">{props.cartCount}</span>
                 </Link>
             </div>
             {/* TODO: basket icon with number badge */}
