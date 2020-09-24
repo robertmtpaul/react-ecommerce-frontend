@@ -3,9 +3,9 @@ import CheckoutItem from './CheckoutItem'
 
 class Checkout extends React.Component {
 
-    // cartUpdate
-
-    
+    // TODO: cartUpdate function?
+    // TODO : add clear cart button
+    // TODO : add remove item from cart
 
     // /cart separate 
     // /cart react route: 
