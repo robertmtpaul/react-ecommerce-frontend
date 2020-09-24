@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link, HashRouter as Router } from "react-router-dom";
+import { Link, HashRouter as Router } from "react-router-dom";
 import "../ProductDetails.css";
 import axios from "axios";
 import {PRODUCTS_URL} from '../constants'
@@ -32,13 +32,13 @@ class ProductDetails extends React.Component {
     } // componentDidMount
 
     addToCart = () => {
-        console.log('button clicked : contents')
+        // console.log('button clicked : contents')
         // On button click, adds the item from the product details page and passes the ID passed from the parent component App.js
         this.props.onAddToCart(this.state.data, this.state.qty)
     }
 
     checkCart() {
-        console.log('check cart!!');
+        // console.log('check cart!!');
         const productId = this.props.match.params.id
         this.props.cart.forEach(cartProduct => {
             // check productId's value of each obj against current id in state
@@ -49,19 +49,12 @@ class ProductDetails extends React.Component {
         });
     }
 
-    doSomethingElse() {
-        console.log('do something else!!');
-    }
-
     cartClick() {
         this.addToCart();
         this.checkCart();
-        this.doSomethingElse();
     }
 
     render() {
-        // TODO: save
-
 
         return (
             <div className="details">

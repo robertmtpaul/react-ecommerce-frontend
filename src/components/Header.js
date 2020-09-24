@@ -1,15 +1,14 @@
 import React from "react";
-import { Route, Link, HashRouter as Router } from 'react-router-dom';
+import { Link, HashRouter as Router } from 'react-router-dom';
 import "../Header.css"
 import SearchIcon from "@material-ui/icons/Search"
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket"
+
 function Header(props) {
 
     return (
 
         <nav className="header">
-            {/* search box */}
-            {/* 3 links */}
             <Link to="/" >
                 <img className="header_logo" src="https://leanfrontiers.com/wp-content/uploads/2018/12/logo-placeholder-png.png" />
             </Link>
@@ -18,13 +17,14 @@ function Header(props) {
                 <SearchIcon className="header_searchIcon" />
             </div>
             <div className="header_nav">
-                {/* use ternary to show links depending on whether user logged in*/}
-                { 
+                
+                {  // use ternary to show links depending on whether user logged in
                  props.currentUser.name !== undefined  
                  ? 
                  ( 
                   <span>
                     <span>Hello {props.currentUser.name } </span>
+
                     {/* perform logout function on click and redirect to login page */}
                     <a href="#" onClick={(e) => {props.onLogout(e); props.history.push('/login')} }>Logout </a>
                   </span>    
@@ -36,7 +36,7 @@ function Header(props) {
                     </Link>
                  )
                 }                       
-                <Link to="/checkout">
+                <Link to="/cart">
                     <div className="header_optionBasket"></div>
                         {/* Shopping basket icon */}
                         <ShoppingBasketIcon />

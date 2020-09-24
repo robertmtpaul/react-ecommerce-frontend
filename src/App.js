@@ -1,3 +1,7 @@
+//  KNOWN BUGS : 
+//  1. Cart doesn't clear until refresh/change item - 
+//  2. When you hit refresh after clearing cart and click into productDetails, 401 unauthorized - user token is reset.
+//  3. 
 import React from 'react';
 import './App.css';
 import './Footer.css';
@@ -6,7 +10,7 @@ import { Route, Link, HashRouter as Router } from 'react-router-dom';
 // import website components
 import ProductIndex from './components/ProductIndex'
 import Header from './components/Header'
-import Checkout from './components/Checkout'
+import Cart from './components/Cart'
 import ProductDetails from './components/ProductDetails'
 import Login from './components/Login'
 import axios from 'axios'
@@ -19,13 +23,13 @@ class App extends React.Component {
   }
   
   addToCart = (product, qty) => {
-    console.log('in add to cart: ', product, qty )
-    // put what is in the cart in state
-    // '...'retains what already in cart
-    //set a variable that keeps an updated version of the cart i.e. 
+    // console.log('in add to cart: ', product, qty )
+    
+    // Set a variable that keeps an updated version of the cart i.e. 
+    ///'...'retains what already in cart
     const newCart = [ ...this.state.cart, {product, qty } ];
-    console.log('quantities' , this.state.cartCount, qty)
-    // 
+    // console.log('quantities' , this.state.cartCount, qty)
+    // Put what is in the cart in state. 
     this.setState({ cart: newCart, cartCount: this.state.cartCount + qty })
     localStorage.setItem('cart', JSON.stringify(newCart))
   }
@@ -36,8 +40,8 @@ class App extends React.Component {
     const token = localStorage.getItem("token")
     const user = localStorage.getItem("user")
     console.log(token)
-    //  and if not null, set token into the axios header
-    // whcih will cause axios headers to be authenticated
+    // And if not null, set token into the axios header
+    // which will cause axios headers to be authenticated
     // set user object into state.
     if( token !== null && user !== null) {
       this.setState({ user: JSON.parse(user)} );
@@ -65,27 +69,26 @@ class App extends React.Component {
     localStorage.setItem( 'user', JSON.stringify(user) )
   }
 
-  // cart calculator
-  // always give total number of items 
-  // loop to add all cart quantities.
-
     performLogout = ( event )=> {
       event.preventDefault()
       delete axios.defaults.headers.common.Authorization
+
+      // Remove the cart & users props stored in local storage.
       localStorage.removeItem("token")
       localStorage.removeItem("user")
       // set the user state as empty object
       this.setState({ user: {} })
     } 
-    //localStorage.removeItem("jwt")
-    // this.setState = {}
 
   render() {
     return (
       
       <Router>
-        <div className="grid-container">
+        <div>
           <Route path="/" render={(props) => <Header {...props} onLogout={this.performLogout} currentUser={this.state.user} cartCount={this.state.cartCount}/>  } />
+          {/*        
+            Pass in ROUTER PROPS into the 
+          */}
           <Route exact path="/login" render={(props) => <Login {...props} onLogin={this.performLogin} />  } />
           <main className="main">
           <div>
@@ -103,7 +106,7 @@ class App extends React.Component {
                 />  
               } 
               />
-          <Route exact path="/checkout" render={(props) => <Checkout {...props} cart={this.state.cart} />  }  /> 
+          <Route exact path="/cart" render={(props) => <Cart {...props} cart={this.state.cart} />  }  /> 
             </div>
           </main>
           <footer className="footer">
