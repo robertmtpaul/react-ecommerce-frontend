@@ -9,13 +9,14 @@ function Header(props) {
     return (
 
         <nav className="header">
+
+            <Link to="/" >
+                <img className="header_logo" src="images/logo.svg" />
+            </Link>
             <div>
                 <h5>WeShop</h5>
 
             </div>
-            <Link to="/" >
-                <img className="header_logo" src="images/logo.svg" />
-            </Link>
             <div className="header_nav">
                 
                 {  // use ternary to show links depending on whether user logged in
