@@ -1,14 +1,13 @@
 import React from "react"
-import Link from 'react-router-dom'
 import CartItem from './CartItem'
+import { Link, HashRouter as Router } from 'react-router-dom';
+import { ThreeSixtySharp } from "@material-ui/icons";
 
 class Cart extends React.Component {
 
     // TODO: cartUpdate function?
     // TODO : add remove item from cart
-    // TODO: rename checkout to cart;  // /cart separate react route: 
 
-    
     
     calculateGrandTotal() {
         // Set a variable to start tracking the amount all the items are costing.
@@ -27,11 +26,6 @@ class Cart extends React.Component {
         this.props.history.push('/')
     }
     
-    removeItem = () => {
-        console.log('checking if deleted', this.props.qty)
-        // this.props.product.item
-    }
-    
 
     render() {
         return (
@@ -43,21 +37,24 @@ class Cart extends React.Component {
                         this.props.cart.map(c =>
                             <CartItem
                                 itemName={c.product.name}
+                                itemId={c.product._id}
                                 itemQty={c.qty}
                                 itemImage={c.product.image}
-                                removeItem={this.removeItem}
+                                removeItem={this.props.removeItem}
                             />
                         ) 
                     }
                     
                     Grandtotal: ${this.calculateGrandTotal()}
-
+                    
+                    <Link to='/checkout'>
+                        <button>Pay</button>
+                    </Link>
                     <button onClick={() => this.clearCart() }>Clear cart</button>
                 </div>
             </div>
         )
     }
-
 
 }
 

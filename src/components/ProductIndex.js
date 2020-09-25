@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import {PRODUCTS_URL} from '../constants'
+import '../Products.css'
 
 function ProductIndex (props) {
     // put the product and setProduct into useState

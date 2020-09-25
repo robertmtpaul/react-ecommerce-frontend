@@ -1,0 +1,17 @@
+.paymentContainer {
+    margin: 5rem;
+}
+
+.paymentForm {
+    display: flex;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup input {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}

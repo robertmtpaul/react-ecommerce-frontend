@@ -12,10 +12,6 @@ function Header(props) {
             <Link to="/" >
                 <img className="header_logo" src="https://leanfrontiers.com/wp-content/uploads/2018/12/logo-placeholder-png.png" />
             </Link>
-            <div className="header_search">
-                <input type="text" />
-                <SearchIcon className="header_searchIcon" />
-            </div>
             <div className="header_nav">
                 
                 {  // use ternary to show links depending on whether user logged in

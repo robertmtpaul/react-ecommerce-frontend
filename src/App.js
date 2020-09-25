@@ -12,6 +12,7 @@ import ProductIndex from './components/ProductIndex'
 import Header from './components/Header'
 import Cart from './components/Cart'
 import ProductDetails from './components/ProductDetails'
+import Checkout from './components/Checkout'
 import Login from './components/Login'
 import axios from 'axios'
 
@@ -33,6 +34,24 @@ class App extends React.Component {
     this.setState({ cart: newCart, cartCount: this.state.cartCount + qty })
     localStorage.setItem('cart', JSON.stringify(newCart))
   }
+
+  removeItem = (removeId) => {// Here the Id of the item to be removed is passed in     
+        console.log(removeId);
+    // Here we make a copy of the cart's current state
+        const cartCopy = [...this.state.cart];
+    // Loop through the cart's current state, passing in the product to be deleted and the index of the item 
+        this.state.cart.forEach( (cartProduct, index) => {
+            console.log('product ebeing compared', cartProduct);
+    // We compare the IDs of the cart products array and check for a match of the product ID being passed in
+            if (cartProduct.product._id === removeId) {
+                console.log('removed', cartProduct);
+    // We then use splice to first get the index of that product in the cart array and delete it from the caopy of the cart
+                cartCopy.splice(index, 1);
+            }
+        });
+    // And now the updated version of the copy we made of the cart is put into state
+        this.setState({cart: cartCopy})
+    }
 
 
   componentDidMount() {
@@ -106,7 +125,8 @@ class App extends React.Component {
                 />  
               } 
               />
-          <Route exact path="/cart" render={(props) => <Cart {...props} cart={this.state.cart} />  }  /> 
+          <Route exact path="/cart" render={(props) => <Cart {...props} cart={this.state.cart} removeItem={this.removeItem} />  }  /> 
+          <Route path="/checkout" component={Checkout}/> 
             </div>
           </main>
           <footer className="footer">

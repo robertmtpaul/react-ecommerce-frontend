@@ -4,11 +4,11 @@ import '../Cart.css'
 function CartItem(props) {
 
     return (
-        <div>
+        <div className="cartItem">
             {props.itemName}, x{props.itemQty}
             <br />
             <img src={props.itemImage} className="checkout-thumbnail" />
-            <button>{props.removeItem()}Remove items</button>
+            <button onClick={ () => props.removeItem(props.itemId)}>Remove item</button>
         </div>
     )
 }

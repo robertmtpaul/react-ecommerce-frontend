@@ -1,3 +1,10 @@
+.cartItem {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .checkout-thumbnail {
     width: 20rem;
+    border-radius: 4%;
 }
