@@ -9,6 +9,10 @@ function Header(props) {
     return (
 
         <nav className="header">
+            <div>
+                <h5>WeShop</h5>
+
+            </div>
             <Link to="/" >
                 <img className="header_logo" src="images/logo.svg" />
             </Link>
@@ -19,7 +23,7 @@ function Header(props) {
                  ? 
                  ( 
                   <span>
-                    <span>Hello {props.currentUser.name } </span>
+                    <span>Hello, {props.currentUser.name } </span>
 
                     {/* perform logout function on click and redirect to login page */}
                     <a href="#" onClick={(e) => {props.onLogout(e); props.history.push('/login')} }>Logout </a>
