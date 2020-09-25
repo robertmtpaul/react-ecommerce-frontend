@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/react-ecommerce-frontend/static/css/main.13bdd223.chunk.css",
-    "main.js": "/react-ecommerce-frontend/static/js/main.ee482307.chunk.js",
-    "main.js.map": "/react-ecommerce-frontend/static/js/main.ee482307.chunk.js.map",
+    "main.css": "/react-ecommerce-frontend/static/css/main.f2e6b034.chunk.css",
+    "main.js": "/react-ecommerce-frontend/static/js/main.d7059a84.chunk.js",
+    "main.js.map": "/react-ecommerce-frontend/static/js/main.d7059a84.chunk.js.map",
     "runtime-main.js": "/react-ecommerce-frontend/static/js/runtime-main.d38f7097.js",
     "runtime-main.js.map": "/react-ecommerce-frontend/static/js/runtime-main.d38f7097.js.map",
-    "static/js/2.8966ff7a.chunk.js": "/react-ecommerce-frontend/static/js/2.8966ff7a.chunk.js",
-    "static/js/2.8966ff7a.chunk.js.map": "/react-ecommerce-frontend/static/js/2.8966ff7a.chunk.js.map",
+    "static/js/2.15ff14a3.chunk.js": "/react-ecommerce-frontend/static/js/2.15ff14a3.chunk.js",
+    "static/js/2.15ff14a3.chunk.js.map": "/react-ecommerce-frontend/static/js/2.15ff14a3.chunk.js.map",
     "index.html": "/react-ecommerce-frontend/index.html",
-    "precache-manifest.41e95a71e775486d80eafe2c1c40fb55.js": "/react-ecommerce-frontend/precache-manifest.41e95a71e775486d80eafe2c1c40fb55.js",
+    "precache-manifest.f9c38093764762e3d762ae908bd2ecae.js": "/react-ecommerce-frontend/precache-manifest.f9c38093764762e3d762ae908bd2ecae.js",
     "service-worker.js": "/react-ecommerce-frontend/service-worker.js",
-    "static/css/main.13bdd223.chunk.css.map": "/react-ecommerce-frontend/static/css/main.13bdd223.chunk.css.map",
-    "static/js/2.8966ff7a.chunk.js.LICENSE.txt": "/react-ecommerce-frontend/static/js/2.8966ff7a.chunk.js.LICENSE.txt"
+    "static/css/main.f2e6b034.chunk.css.map": "/react-ecommerce-frontend/static/css/main.f2e6b034.chunk.css.map",
+    "static/js/2.15ff14a3.chunk.js.LICENSE.txt": "/react-ecommerce-frontend/static/js/2.15ff14a3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d38f7097.js",
-    "static/js/2.8966ff7a.chunk.js",
-    "static/css/main.13bdd223.chunk.css",
-    "static/js/main.ee482307.chunk.js"
+    "static/js/2.15ff14a3.chunk.js",
+    "static/css/main.f2e6b034.chunk.css",
+    "static/js/main.d7059a84.chunk.js"
   ]
 }

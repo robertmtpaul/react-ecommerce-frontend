@@ -1,7 +1,6 @@
 //  KNOWN BUGS : 
 //  1. Cart doesn't clear until refresh/change item - 
 //  2. When you hit refresh after clearing cart and click into productDetails, 401 unauthorized - user token is reset.
-//  3. 
 import React from 'react';
 import './App.css';
 import './Footer.css';

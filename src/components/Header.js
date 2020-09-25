@@ -10,7 +10,7 @@ function Header(props) {
 
         <nav className="header">
             <Link to="/" >
-                <img className="header_logo" src="https://leanfrontiers.com/wp-content/uploads/2018/12/logo-placeholder-png.png" />
+                <img className="header_logo" src="images/logo.svg" />
             </Link>
             <div className="header_nav">
                 

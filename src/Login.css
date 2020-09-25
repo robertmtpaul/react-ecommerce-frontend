@@ -16,12 +16,12 @@
     border-radius: 5px;
     border: 1px solid lightgray;
     padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-/* TUTORIAL CSS: */
 
-/* 
-.login {
+ .login {
     background-color: white;
     height: 100vh;
     display: flex;
@@ -29,8 +29,23 @@
     align-items: center;
 }
 
-
 .login_container > h1 {
     font-weight: 500;
     margin-bottom: 20px;
-}  */
+}
+
+.button-primary {
+    background-color: #008CBA;
+    border: #008CBA;
+    border-radius: 4px;
+    padding: 10px;
+    color: white;
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px ;
+    margin-top: 5px;
+}

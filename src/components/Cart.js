@@ -46,11 +46,13 @@ class Cart extends React.Component {
                     }
                     
                     Grandtotal: ${this.calculateGrandTotal()}
-                    
-                    <Link to='/checkout'>
-                        <button>Pay</button>
-                    </Link>
-                    <button onClick={() => this.clearCart() }>Clear cart</button>
+                    <br />
+                    <div className="button-group">
+                        <Link to='/checkout'>
+                            <button className="button-primary">Pay</button>
+                        </Link>
+                        <button className="button-danger" onClick={() => this.clearCart() }>Clear cart</button>
+                    </div>
                 </div>
             </div>
         )

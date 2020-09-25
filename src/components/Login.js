@@ -3,6 +3,7 @@ import '../Login.css';
 import { Link, HashRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import {LOGIN_URL} from '../constants'
+import '../Checkout.css'
 
 class Login extends React.Component {
     // login state 
@@ -47,31 +48,28 @@ class Login extends React.Component {
     render(){
         return (
             <div className="login">
-            <Link to='/'>
-                <img
-                    className="login_logo"
-                    src="https://static.dribbble.com/users/261302/screenshots/1361907/logoplaceholder.png"
-                />
-            </Link>
             <div className='login_container'>
-                <h1>Sign-in</h1>
+                <h1>Please sign in </h1>
 
-                <form onSubmit={this.handleSubmit}>
-                    <h5>E-mail</h5>
+                <form onSubmit={this.handleSubmit} className="formGroup">
                     <input 
                         type="text" 
                         name="email"
+                        placeholder = "Email"
                         onChange={this.handleChange} 
                     />
 
-                    <h5>Password</h5>
                     <input 
                         type="password" 
                         name="password"
+                        placeholder = "Password"
                         onChange={this.handleChange} 
                     />
 
-                    <button className="login_signInButton">Sign in</button>
+                    <div>
+                        <button className="button-primary">Sign in</button>
+
+                    </div>
                 </form>
 
             </div>
