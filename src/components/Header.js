@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, HashRouter as Router } from 'react-router-dom';
 import "../Header.css"
-import SearchIcon from "@material-ui/icons/Search"
+// import SearchIcon from "@material-ui/icons/Search"
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket"
 
 function Header(props) {

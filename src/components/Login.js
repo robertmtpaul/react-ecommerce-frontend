@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../Login.css';
-import { Link, HashRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import {LOGIN_URL} from '../constants'
 import '../Checkout.css'
