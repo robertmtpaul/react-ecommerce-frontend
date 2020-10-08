@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, HashRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../ProductDetails.css";
 import axios from "axios";
 import {PRODUCTS_URL} from '../constants'
