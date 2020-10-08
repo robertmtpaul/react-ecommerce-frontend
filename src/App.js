@@ -54,7 +54,6 @@ class App extends React.Component {
     // Check if local storage token and user is set
     const token = localStorage.getItem("token")
     const user = localStorage.getItem("user")
-    console.log(token)
     // And if not null, set token into the axios header
     // which will cause axios headers to be authenticated
     // set user object into state.
