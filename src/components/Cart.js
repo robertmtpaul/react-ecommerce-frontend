@@ -1,7 +1,6 @@
 import React from "react"
 import CartItem from './CartItem'
 import { Link, HashRouter as Router } from 'react-router-dom';
-import { ThreeSixtySharp } from "@material-ui/icons";
 
 class Cart extends React.Component {
 

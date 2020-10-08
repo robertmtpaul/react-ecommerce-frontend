@@ -11,7 +11,7 @@ function Header(props) {
         <nav className="header">
 
             <Link to="/" >
-                <img className="header_logo" src="images/logo.svg" />
+                <img className="header_logo" src="images/logo.svg" alt="shopping cart logo"/>
             </Link>
             <div>
                 <h5>WeShop</h5>

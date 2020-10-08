@@ -1,7 +1,3 @@
-//  KNOWN BUGS : 
-//  1. Cart doesn't clear until refresh/change item - 
-//  2. When you hit refresh after clearing cart and click into productDetails, 401 unauthorized - user token is reset.
-//  3. If you click the logo at top of page  it redirects to the home page & not 
 import React from 'react';
 import './App.css';
 import './Footer.css';
@@ -27,7 +23,7 @@ class App extends React.Component {
     // console.log('in add to cart: ', product, qty )
     
     // Set a variable that keeps an updated version of the cart i.e. 
-    ///'...'retains what already in cart
+    ///'...'retains what is already in cart
     const newCart = [ ...this.state.cart, {product, qty } ];
     // console.log('quantities' , this.state.cartCount, qty)
     // Put what is in the cart in state. 
