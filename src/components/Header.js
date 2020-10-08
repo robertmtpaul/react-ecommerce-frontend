@@ -3,11 +3,14 @@ import { Link, HashRouter as Router } from 'react-router-dom';
 import "../Header.css"
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+// allow us to use ContextAPI in component.
 import { useStateValue } from "../StateProvider";
 
 function Header(props) {
-
     const [{ cart }] = useStateValue();
+    // give current state of the cart, then 'dispatch' shoots item to the data layer i.e. cart.
+
+    console.log(cart)
 
     return (
 

@@ -17,15 +17,6 @@ class App extends React.Component {
     cart: [],
   }
   
-  addToCart = (productId, qty, price) => {
-    console.log('in add to cart: ', productId, qty, price )
-    // put what is in the cart in state
-    // '...'retains what already in cart
-    this.setState({cart: [ ...this.state.cart, {productId, qty, price } ]})
-    // 
-  }
-
-
   componentDidMount() {
     // TODO1   : check if local storage token and user is set
     const token = localStorage.getItem("token")
