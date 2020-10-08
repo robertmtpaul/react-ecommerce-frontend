@@ -14,8 +14,6 @@ class Login extends React.Component {
 
     // Store the information entered into the fields in the form as soon as there is a change by listening for event / moment something entered in the form
     handleChange = (event) => {
-        console.log(event.target.value)
-        console.log(event.target.name)
         this.setState({
             // it differentiates between the email/password inputs using the ‘name’ value in the form input element, then assigns it a value to be stored in state
             [event.target.name]:event.target.value
