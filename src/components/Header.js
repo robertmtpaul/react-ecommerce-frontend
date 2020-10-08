@@ -4,13 +4,9 @@ import "../Header.css"
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 // allow us to use ContextAPI in component.
-import { useStateValue } from "../StateProvider";
 
 function Header(props) {
-    const [{ cart }] = useStateValue();
     // give current state of the cart, then 'dispatch' shoots item to the data layer i.e. cart.
-
-    console.log(cart)
 
     return (
 
@@ -20,10 +16,6 @@ function Header(props) {
             <Link to="/" >
                 <img className="header_logo" src="https://leanfrontiers.com/wp-content/uploads/2018/12/logo-placeholder-png.png" />
             </Link>
-            <div className="header_search">
-                <input type="text" />
-                <SearchIcon className="header_searchIcon" />
-            </div>
             <div className="header_nav">
                 {/* use ternary to show links depending on whether user logged in*/}
                 { 
@@ -48,7 +40,7 @@ function Header(props) {
                         {/* Shopping basket icon */}
                         <ShoppingBasketIcon />
                         {/* Number items in the basket */}
-                        <span className="header_basketCount">{cart.length}</span>
+                        <span className="header_basketCount">0</span>
                 </Link>
             </div>
             {/* TODO: basket icon with number badge */}

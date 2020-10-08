@@ -1,7 +1,7 @@
 import React from 'react';
+import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import './App.css';
 import './Footer.css';
-import { Route, Link, HashRouter as Router } from 'react-router-dom';
 
 // import website components
 import ProductIndex from './components/ProductIndex'

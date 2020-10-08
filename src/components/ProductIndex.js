@@ -1,43 +1,33 @@
 // initialise React and hooks methods i.e. useState, useEffect
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import axios from 'axios';
-import { useStateValue } from "../StateProvider";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from '../actions/productActions'
 
 function ProductIndex(props) {
-  const [products, setProduct] = useState([]);  // put the product and setProduct into useState
-  const [{}, dispatch] = useStateValue(); // getting cart, and the dispatch. 
+  const productList = useSelector(state => state.productList);
+  // import products,loading , error from the productList in ... 
+  const { products, loading, error } = productList;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(listProducts());
 
-  const PRODUCTS_BASE_URL = "http://localhost:1337/products"
+    return () => {
+      // 
+    };
+  }, [])
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get(PRODUCTS_BASE_URL)     // Set the data retrieved via axios request into state in setProduct
-
-      setProduct(data);
-    }
-    fetchProducts();
     return () => {
       // cleanup
     }
   }, [])
 
-  const addToCart = (props) => { 
-    // Add item to cart...
-    dispatch({
-      type: 'ADD_TO_CART',
-      item: { // passing a payload.
-        id: props._id, 
-        name: props.name,
-        image: props.image,
-        price: props.price,
-        rating: props.rating
-      }
-    })
-  };
 
-  return <ul className="products">
+  return loading? <div>Loading...</div>: 
+  error? <div>{error}</div> :
+  
+  <ul className="products">
     {
       // Map through products in state, 
       products.map(product =>
@@ -53,7 +43,7 @@ function ProductIndex(props) {
             <div className="product-brand">{product.brand}</div>
             <div className="product-price">${product.price}</div>
             <div className="product-rating">{product.rating} Stars({product.numReviews} Reviews)</div>
-            <button onClick={addToCart}>Add to cart</button>
+            <button>Add to cart</button>
           </div>
         </li>)
     }
