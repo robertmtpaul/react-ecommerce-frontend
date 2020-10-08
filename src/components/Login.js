@@ -8,8 +8,8 @@ class Login extends React.Component {
     // login state 
 
     state = {
-        email: '',
-        password: '',
+        email: 'robbie@ga.co',
+        password: 'chicken',
     };
 
     // Store the information entered into the fields in the form as soon as there is a change by listening for event / moment something entered in the form
@@ -22,14 +22,12 @@ class Login extends React.Component {
     
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log( )
         // HandleSubmit posts the login details entered in the form to the backend using axios post request.
         axios.post(  LOGIN_URL, { 
             email: this.state.email,
             password: this.state.password
         })
         .then(res => {
-            console.log('response data', res.data)
         // Sets token and user app props to the token and user object received from backend.
             this.props.onLogin(res.data.token, res.data.user)
         // Redirects user to productIndex page.
@@ -57,7 +55,7 @@ class Login extends React.Component {
                     />
 
                     <input 
-                        type="password" 
+                        type="password"
                         name="password"
                         placeholder = "Password"
                         onChange={this.handleChange} 
@@ -65,8 +63,15 @@ class Login extends React.Component {
 
                     <div>
                         <button className="button-primary">Sign in</button>
+                        <p>OR:</p>
+                        <button className="button-primary">Use default login credentials</button>
+
 
                     </div>
+
+                    <div>
+                    <br />
+                </div>
                 </form>
 
             </div>
