@@ -8,13 +8,16 @@ import { useStateValue } from "../StateProvider";
 
 function ProductIndex (props) {
     // put the product and setProduct into useState
-    const [ products, setProduct ] = useState ([]);
-    
+    const [ products, setProducts ] = useState ([]);   
+    // getting cart, and the dispatch. 
+    const [{cart}, dispatch] = useStateValue(); 
+
     useEffect(() => {
       const fetchProducts = async () => {
+        // use axios to retrieve products from backend API and store as variable 'data'
         const { data } = await axios.get(PRODUCTS_URL)
         // Set the data retrieved via axios request into state in setProduct
-        setProduct(data);
+        setProducts(data);
       }
       fetchProducts(); 
       return () => {
