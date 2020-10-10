@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import "../Header.css"
 // import SearchIcon from "@material-ui/icons/Search"
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket"
+// allow us to use ContextAPI in component.
+import { useStateValue } from "../StateProvider";
 
 function Header(props) {
+    const [{ cart }] = useStateValue();
+    // give current state of the cart, then 'dispatch' shoots item to the data layer i.e. cart.
 
     return (
 
@@ -39,13 +43,10 @@ function Header(props) {
                 }                       
                 <Link to="/cart">
                     <div className="header_optionBasket"></div>
-                        {/* Shopping basket icon */}
                         <ShoppingBasketIcon />
-                        {/* Number items in the basket */}
-                        <span className="header_basketCount">{props.cartCount}</span>
+                        <span className="header_basketCount">{cart.length}</span>
                 </Link>
             </div>
-            {/* TODO: basket icon with number badge */}
         </nav>
 
     )

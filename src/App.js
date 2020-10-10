@@ -120,7 +120,7 @@ class App extends React.Component {
                 />  
               } 
               />
-          <Route exact path="/cart" render={(props) => <Cart {...props} cart={this.state.cart} removeItem={this.removeItem} />  }  /> 
+          <Route path="/cart" /> 
           <Route path="/checkout" component={Checkout}/> 
             </div>
           </main>

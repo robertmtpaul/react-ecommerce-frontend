@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 import {PRODUCTS_URL} from '../constants'
 import '../Products.css'
+import { useStateValue } from "../StateProvider";
 
 function ProductIndex (props) {
     // put the product and setProduct into useState
@@ -12,7 +13,7 @@ function ProductIndex (props) {
     useEffect(() => {
       const fetchProducts = async () => {
         const { data } = await axios.get(PRODUCTS_URL)
-        // Set the data retrieved vai axios request into state in setProduct
+        // Set the data retrieved via axios request into state in setProduct
         setProduct(data);
       }
       fetchProducts(); 
