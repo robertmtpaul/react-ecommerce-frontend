@@ -38,7 +38,7 @@ function ProductIndex(props) {
         rating: product.rating
       }
     };
-    console.log(payload);
+    // console.log(payload);
     // dispatch()
     dispatch({
       type: 'ADD_TO_CART',
