@@ -42,9 +42,9 @@ function Header(props) {
                  )
                 }                       
                 <Link to="/cart">
-                    <div className="header_optionBasket"></div>
+                    <div className="header_optionCart"></div>
                         <ShoppingBasketIcon />
-                        <span className="header_basketCount">{cart.length}</span>
+                        <span className="header_cartCount">{cart.length}</span>
                 </Link>
             </div>
         </nav>

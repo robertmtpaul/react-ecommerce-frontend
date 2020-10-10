@@ -7,6 +7,7 @@ import { Route, HashRouter as Router } from 'react-router-dom';
 import ProductIndex from './components/ProductIndex'
 import Header from './components/Header'
 import ProductDetails from './components/ProductDetails'
+import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import Login from './components/Login'
 import axios from 'axios'
@@ -113,8 +114,10 @@ class App extends React.Component {
             <div className="content">
               <Route exact path="/" component={ProductIndex} />
               <Route exact path="/products/:id" component={ProductDetails} />
-              <Route path="/cart" />
-              <Route path="/checkout" component={Checkout} />
+              <Route exact path="/checkout" />
+              <Route path="/cart" >
+                <Cart />
+              </Route>
             </div>
           </main>
           <footer className="footer">

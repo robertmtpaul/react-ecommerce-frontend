@@ -1,10 +1,10 @@
 // initialise React and hooks methods i.e. useState, useEffect
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
 import axios from 'axios';
+import { useStateValue } from "../StateProvider";
+import { Link } from 'react-router-dom'
 import { PRODUCTS_URL } from '../constants'
 import '../Products.css'
-import { useStateValue } from "../StateProvider";
 
 function ProductIndex(props) {
   // put the product and setProduct into useState
@@ -35,6 +35,7 @@ function ProductIndex(props) {
         name: product.name,
         image: product.image,
         price: product.price,
+        qty: product.quantity,
         rating: product.rating
       }
     };
@@ -47,6 +48,7 @@ function ProductIndex(props) {
         name: product.name,
         image: product.image,
         price: product.price,
+        quantity: product.quantity,
         rating: product.rating
       }
     })

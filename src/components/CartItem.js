@@ -5,9 +5,8 @@ function CartItem(props) {
 
     return (
         <div className="cartItem">
-            {props.itemName}, x{props.itemQty}
-            <br />
-            <img src={props.itemImage} className="checkout-thumbnail" alt="basket icon" />
+            {props.itemName}, in stock: {props.itemQty}
+            <img src={props.itemImage} className="checkout-thumbnail" alt={props.itemName} />
             <button onClick={ () => props.removeItem(props.itemId)}>Remove item</button>
         </div>
     )
