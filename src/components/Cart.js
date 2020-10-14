@@ -5,7 +5,7 @@ import CartItem from './CartItem'
 
 function Cart() {
 
-    const [{ cart }] = useStateValue()
+    const [{ cart } ] = useStateValue()
 
     // TODO : FIX THIS:
     const calculateGrandTotal = () => {

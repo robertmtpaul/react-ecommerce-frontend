@@ -108,13 +108,16 @@ class App extends React.Component {
           <Route exact path="/login" render={(props) => <Login {...props} onLogin={this.performLogin} />} />
           <main className="main">
             <div>
-
+          
               <br />
             </div>
             <div className="content">
               <Route exact path="/" component={ProductIndex} />
               <Route exact path="/products/:id" component={ProductDetails} />
-              <Route exact path="/checkout" />
+              <Route path="/checkout" >
+                <Header />
+                <h1>Checkout</h1>
+              </Route>
               <Route path="/cart" >
                 <Cart />
               </Route>
