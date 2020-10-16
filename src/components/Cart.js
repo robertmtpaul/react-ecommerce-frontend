@@ -43,12 +43,12 @@ function Cart() {
                                 console.log(product)
                                 return (
                                     <CartItem
-                                        itemName={product.name}
-                                        itemId={product.id}
-                                        itemPrice={product.price}
-                                        itemQty={product.quantity}
-                                        itemImage={product.image}
-                                        itemRating={product.rating}
+                                        name={product.name}
+                                        id={product.id}
+                                        price={product.price}
+                                        qty={product.quantity}
+                                        image={product.image}
+                                        rating={product.rating}
                                     />
                                 );
                         })}
