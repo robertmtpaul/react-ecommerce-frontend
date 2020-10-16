@@ -1,0 +1,6 @@
+.cartTotal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(141, 211, 141)
+}

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useStateValue } from "../StateProvider";
 import { Link } from 'react-router-dom'
 import { PRODUCTS_URL } from '../constants'
-import '../Products.css'
+import '../ProductIndex.css'
 
 function ProductIndex(props) {
   // put the product and setProduct into useState
