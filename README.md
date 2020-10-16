@@ -30,8 +30,8 @@ To view the site, simply visit https://robertmtpaul.github.io/react-ecommerce-fr
 - Shopping cart doesn't clear until page is refreshed
 - Log in page does not display when viewing the route page
 
-### Future dev plans
-- 💡 New user registration
-- 💡 Refactor of cart using Context API and/or Redux
-- 💡 Order route to be developed on backend to send product cart on successful payment as order
-- 💡 Implementation of Stripe API for taking payment from user
+### 💡 Future dev plans
+- Implementation of Stripe API for taking payment from user
+- Refactor of cart using Context API and/or Redux
+- New user registration
+- Order route to be developed on backend to send product cart on successful payment as order
