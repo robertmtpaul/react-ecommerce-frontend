@@ -1,13 +1,6 @@
 // We export this as we want to use it outside of this reducer.js file.
 export const initialState = {
-    cart: [{
-        id: "5f7a8cd16f398e25d725c436",
-        name: "PS5",
-        price: 500,
-        image: "https://res.cloudinary.com/dgqqw6hwo/image/upload/v1601866371/PS5.png",
-        quantity: 4,
-        rating: 4
-    }],
+    cart: []
 };
 
 export const calculateGrandTotal = (cart) =>

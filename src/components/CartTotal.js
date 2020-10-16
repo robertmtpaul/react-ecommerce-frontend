@@ -1,10 +1,11 @@
 import React from 'react'
 import '../CartTotal.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
 
 function CartTotal() {
-    const [{ cart}, dispatch] = useStateValue()
+    const history = useHistory();
+    const [{ cart }, dispatch] = useStateValue()
 
     const calculateGrandTotal = () => {
         // Set a variable to start tracking the amount all the items are costing.
@@ -16,17 +17,16 @@ function CartTotal() {
         // Spit out the grand total, and add two decimal places.
         return grandTotal.toFixed(2)
     }
- 
+
 
     return (
         <div>
             Grandtotal: ${calculateGrandTotal()}
-                <div className="button-group">
-                    <Link to='/checkout'>
-                        <button className="button-primary">Go to checkout</button>
-                    </Link>
-                    <button className="button-danger">Clear cart</button>
-                </div>
+            <div className="button-group">
+                <button className="button-primary" onClick={e => history.push('/payment') // pushes the user somewhere, instead of using link.
+                }>Go to checkout</button>
+                <button className="button-danger">Clear cart</button>
+            </div>
         </div>
     )
 }

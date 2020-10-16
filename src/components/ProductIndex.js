@@ -54,28 +54,33 @@ function ProductIndex(props) {
     })
   };
 
-  return <ul className="products">
-    {
-      // Map through products in state, 
-      products.map(product =>
-        //set key to something unique like productID to satisfy map function
-        <li key={product._id}>
-          <div className="product">
-            <Link to={`${/products/}${product._id}`}>
-              <img className="product-image" src={product.image} alt={product.name} />
-            </Link>
-            <div className="product-name">
-              <Link to={`${/products/}${product._id}`}>{product.name}</Link>
-            </div>
-            <div className="product-brand">{product.brand}</div>
-            <div className="product-price">${product.price}</div>
-            <div className="product-rating">{product.rating} Stars({product.numReviews} Reviews)</div>
-            <button onClick={() => addToCart(product)}>Add to cart</button>
-          </div>
-        </li>)
-    }
-  </ul>
+  return (
 
+    <div>
+      <ul className="products">
+        {
+          // Map through products in state, 
+          products.map(product =>
+            //set key to something unique like productID to satisfy map function
+            <li key={product._id}>
+              <div className="product">
+                <Link to={`${/products/}${product._id}`}>
+                  <img className="product-image" src={product.image} alt={product.name} />
+                </Link>
+                <div className="product-name">
+                  <Link to={`${/products/}${product._id}`}>{product.name}</Link>
+                </div>
+                <div className="product-brand">{product.brand}</div>
+                <div className="product-price">${product.price}</div>
+                <div className="product-rating">{product.rating} Stars({product.numReviews} Reviews)</div>
+                <button onClick={() => addToCart(product)}>Add to cart</button>
+              </div>
+            </li>)
+        }
+      </ul>
+
+    </div>
+  )
 }
 
 export default ProductIndex;

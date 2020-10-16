@@ -7,7 +7,7 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket"
 import { useStateValue } from "../StateProvider";
 
 function Header(props) {
-    const [{ cart }] = useStateValue();
+    const [{ cart }, dispatch] = useStateValue();
     // give current state of the cart, then 'dispatch' shoots item to the data layer i.e. cart.
     console.log(cart)
     return (
@@ -44,7 +44,7 @@ function Header(props) {
                 <Link to="/cart">
                     <div className="header_optionCart"></div>
                         <ShoppingBasketIcon />
-                        <span className="header_cartCount">{cart.length}</span>
+                        <span className="header_cartCount">{cart?.length}</span>
                 </Link>
             </div>
         </nav>
