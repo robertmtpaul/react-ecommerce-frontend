@@ -1,18 +1,15 @@
-.cartItem {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.checkout-thumbnail {
+.cart-thumbnail {
     width: 20rem;
     border-radius: 4%;
 }
 
+
+/* ==================================BUTTON STYLES================================== */
+
 .button-group {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 5px ;
+    margin-bottom: 5px;
     margin-top: 5px;
 }
 

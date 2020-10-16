@@ -7,17 +7,16 @@ function Cart() {
 
     const [{ cart } ] = useStateValue()
 
-    // TODO : FIX THIS:
-    const calculateGrandTotal = () => {
-        // Set a variable to start tracking the amount all the items are costing.
-        let grandTotal = 0
-        // Loop through the cart items and multiply the quantities of each item by their respective price.
-        cart.forEach(cartItem => {
-            grandTotal += cartItem.product.price * cartItem.product.quantity
-        });
-        // Spit out the grand total, and add two decimal places.
-        return grandTotal.toFixed(2)
-    }
+    // const calculateGrandTotal = () => {
+    //     // Set a variable to start tracking the amount all the items are costing.
+    //     let grandTotal = 0
+    //     // Loop through the cart's items and add up all their prices.
+    //     cart.forEach(cartItem => {
+    //         grandTotal += cartItem.price
+    //     });
+    //     // Spit out the grand total, and add two decimal places.
+    //     return grandTotal.toFixed(2)
+    // }  
 
     // const clearCart = () => {
     //     console.log('checking for cart items', this.props.cart);
@@ -40,21 +39,24 @@ function Cart() {
 
                         {
                             //use .map to go through the array of items in the cart and display to the user the name, qty of the item in the cart, and an image for the item.
-                            cart.map(product => (
-                                <CartItem
-                                    itemName={product.name}
-                                    itemId={product._id}
-                                    itemQty={product.quantity}
-                                    itemImage={product.image}
-                                    itemRating={product.rating}
-                                />
-                            ))
-                        }
+                            cart?.map((product) => {
+                                console.log(product)
+                                return (
+                                    <CartItem
+                                        itemName={product.name}
+                                        itemId={product.id}
+                                        itemPrice={product.price}
+                                        itemQty={product.quantity}
+                                        itemImage={product.image}
+                                        itemRating={product.rating}
+                                    />
+                                );
+                        })}
                     </div>
                 )}
 
             <div>
-                Grandtotal: ${calculateGrandTotal()}
+                {/* Grandtotal: ${calculateGrandTotal()} */}
                 <br />
                 <div className="button-group">
                     <Link to='/checkout'>
