@@ -31,7 +31,7 @@ To view the site, simply visit https://robertmtpaul.github.io/react-ecommerce-fr
 - Log in page does not display when viewing the route page
 
 ### Future dev plans
-- New user registration
-- Refactor of cart using Context API and/or Redux
-- Order route to be developed on backend to send product cart on successful payment as order
-- Implementation of Stripe API for taking payment from user
+💡 New user registration
+💡 Refactor of cart using Context API and/or Redux
+💡 Order route to be developed on backend to send product cart on successful payment as order
+💡 Implementation of Stripe API for taking payment from user
