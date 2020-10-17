@@ -47,6 +47,7 @@ function Payment(props) {
                         <CartItem
                             name={product.name}
                             id={product.id}
+                            qty={product.quantity}
                             price={product.price}
                             image={product.image}
                             rating={product.rating}
