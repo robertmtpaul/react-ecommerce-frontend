@@ -5,8 +5,7 @@ import { PRODUCTS_URL } from "../constants";
 import { useStateValue } from "../StateProvider";
 import "../ProductDetails.css";
 
-
-let cartQty = 0;
+// let cartQty = 0;
 
 export default function ProductDetailsFunctional(props) {
   const [product, setProduct] = useState({
@@ -21,7 +20,7 @@ export default function ProductDetailsFunctional(props) {
     description: "",
   });
   const [{ cart }, dispatch] = useStateValue();
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
 
   const fetchProduct = () => {
     // use axios to retrieve product with the matching ID passed in by props and store as variable 'data'
@@ -89,10 +88,10 @@ export default function ProductDetailsFunctional(props) {
             <li>
               <strong>Price: ${product.price} </strong>
             </li>
-            <li>
+            {/* <li>
               <p>Description:</p>
               {product.description}
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
@@ -111,7 +110,7 @@ export default function ProductDetailsFunctional(props) {
             }
 
           </li>
-          <li>
+          {/* <li>
             <select
               onChange={(e) => {
                 setQuantity(parseInt(e.target.value));
@@ -123,7 +122,7 @@ export default function ProductDetailsFunctional(props) {
               <option>4</option>
               <option>5</option>
             </select>
-          </li>
+          </li> */}
           <li>
             <button className="button" onClick={cartClick}>
               Add to cart
