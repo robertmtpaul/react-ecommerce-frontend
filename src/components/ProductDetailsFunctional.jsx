@@ -5,31 +5,46 @@ import { PRODUCTS_URL } from "../constants";
 import { useStateValue } from "../StateProvider";
 
 export default function ProductDetailsFunctional(props) {
-  const [data, setData] = useState({
+  const [product, setProduct] = useState({
     name: "",
     category: "",
     image: "",
     price: "",
     brand: "",
     rating: "",
+    quantity: "",
     numReviews: "",
     description: "",
   });
   const [{ cart }, dispatch] = useStateValue();
   const [quantity, setQuantity] = useState(1);
 
-  useEffect(() => {
-    Axios
-      .get(`${PRODUCTS_URL}/${props.match.params.id}`)
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, [props.match]);
 
-  // function addToCart() {
-  //   props.onAddToCart(this.state.data, this.state.qty);
-  // }
+  const fetchProduct = () => {
+    // use axios to retrieve product with the matching ID passed in by props and store as variable 'data'
+    Axios.get(`${PRODUCTS_URL}/${props.match.params.id}`)
+    // Set the data retrieved by Axios request into state using setProduct.
+    .then( response => {
+      console.log('matched product', response.data)
+      setProduct(response.data);
+    })
+    .catch( err => console.log(err) );
+  } // fetchProduct
+
+  useEffect( () => {
+    fetchProduct();
+    console.log('Product component mounted!')
+      // create function that runs and grabs data from API
+  }, [props.match])
+
+
+  //   Axios
+  //     .get()
+  //     .then((response) => {
+  //       setProduct(response.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [props.match]);
 
   // function checkCart() {
   //   const productId = props.match.params.id;
@@ -45,12 +60,12 @@ export default function ProductDetailsFunctional(props) {
     dispatch({
       type: 'ADD_TO_CART',
       item: {
-        product: data._id,
-        name: data.name,
-        image: data.image,
-        price: data.price,
-        quantity: data.quantity,
-        rating: data.rating
+        product: product._id,
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        quantity: product.quantity,
+        rating: product.rating
       }
     })
   };
@@ -60,8 +75,6 @@ export default function ProductDetailsFunctional(props) {
     // checkCart();
   }
 
-  console.log('@@@@@@', data);
-
   return (
     <div className="details">
       <Link className="back" to="/">
@@ -69,22 +82,22 @@ export default function ProductDetailsFunctional(props) {
       </Link>
       <div className="details">
         <div className="details-image">
-          <img src={data.image} alt={data.name} />
+          <img src={product.image} alt={product.name} />
         </div>
         <div className="details-info">
           <ul>
             <li>
-              <h4>{data.name}</h4>
+              <h4>{product.name}</h4>
             </li>
             <li>
-              {data.rating} Stars ({data.numReviews} Reviews )
+              {product.rating} Stars ({product.numReviews} Reviews )
             </li>
             <li>
-              <strong>Price: ${data.price} </strong>
+              <strong>Price: ${product.price} </strong>
             </li>
             <li>
               <p>Description:</p>
-              {data.description}
+              {product.description}
             </li>
           </ul>
         </div>
@@ -93,9 +106,9 @@ export default function ProductDetailsFunctional(props) {
         {/* {cartQty > 0 && <div>You have this amount in cart....{cartQty}</div>} */}
         <ul>
           <li>
-            Price: <strong>${data.price}</strong>
+            Price: <strong>${product.price}</strong>
           </li>
-          <li>Status: {data.status}</li>
+          <li>Status: {product.status}</li>
           <li>
             <select
               onChange={(e) => {
