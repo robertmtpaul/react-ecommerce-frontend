@@ -19,7 +19,7 @@ function Header(props) {
         />
       </Link>
       <div>
-        <h5>Mercadillo</h5>
+        <h3>Mercadillo</h3>
       </div>
       <div className="header_nav">
         {

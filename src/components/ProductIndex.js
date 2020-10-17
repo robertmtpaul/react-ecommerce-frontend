@@ -32,20 +32,6 @@ function ProductIndex() {
 
   const addToCart = (product) => {
     // Add item to cart...
-    const payload = {
-      type: "ADD_TO_CART",
-      product: {
-        // passing a payload.
-        product: product._id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        qty: product.quantity,
-        rating: product.rating,
-      },
-    };
-    // console.log(payload);
-    // dispatch()
     dispatch({
       type: "ADD_TO_CART",
       item: {

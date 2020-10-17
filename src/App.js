@@ -103,7 +103,14 @@ class App extends React.Component {
               <Route path="/cart">
                 <Cart />
               </Route>
-              <Route exact path="/payment" component={Payment} />
+              <Route exact path="/payment"
+                render={(props) => (
+                  <Payment 
+                  {...props } // Pass in the current user to the payment page using router props
+                currentUser={this.state.user}
+                />
+              )}
+              />
             </div>
           </main>
           <footer className="footer">

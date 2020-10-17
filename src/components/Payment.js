@@ -21,8 +21,8 @@ function Payment(props) {
                         <h3>Delivery address</h3>
                     </div>
                     <div className="payment_address">
-                        <p>user@ga.co</p>
-                        <p>123 George Street</p>
+                        <p>{props.currentUser.name} ({props.currentUser.email})</p>
+                        <p>{props.currentUser.address}</p>
                         <p>Sydney, Australia</p>
                     </div>
                 </div>

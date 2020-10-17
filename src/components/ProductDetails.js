@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PRODUCTS_URL } from "../constants";
 import { useStateValue } from "../StateProvider";
+import "../ProductDetails.css";
+
 
 let cartQty = 0;
 
@@ -37,14 +39,6 @@ export default function ProductDetailsFunctional(props) {
     console.log("Product component mounted!");
     // create function that runs and grabs data from API
   }, [props.match]);
-
-  //   Axios
-  //     .get()
-  //     .then((response) => {
-  //       setProduct(response.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [props.match]);
 
   // function checkCart() {
   //   const productId = props.match.params.id;
@@ -108,7 +102,7 @@ export default function ProductDetailsFunctional(props) {
           <li>
             Price: <strong>${product.price}</strong>
           </li>
-          <li>Status: {product.status}</li>
+          <li>In stock: {product.status}</li>
           <li>
             <select
               onChange={(e) => {
