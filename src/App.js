@@ -3,15 +3,22 @@ import './App.css';
 import './Footer.css';
 import { Route, HashRouter as Router } from 'react-router-dom';
 import axios from 'axios'
-import { auth } from './firebase'
 
 // import website components
 import ProductIndex from './components/ProductIndex'
 import Header from './components/Header'
-import ProductDetails from './components/ProductDetails'
 import Cart from './components/Cart'
 import Login from './components/Login'
 import Payment from './components/Payment'
+import ProductDetails from './components/ProductDetails'
+import ProductDetailsFunctional from './components/ProductDetailsFunctional';
+
+// import { auth } from './firebase'
+// import { loadStripe } from '@stripe/stripe-js'
+// import { Elements } from "@stripe/stripe-js";
+
+// const promise = loadStripe
+//   ('pk_test_51HUoMRErAewt7RL6NDXnnMAB1Qzx8LEq7baSaXT5fy11YQmsl8A2c2m4mzzeW5O3R4Nynlsdh5srVKDyNkNQ6vZZ00pyGr4vsZ');
 
 class App extends React.Component {
   state = {
@@ -77,17 +84,17 @@ class App extends React.Component {
           <Route exact path="/login" render={(props) => <Login {...props} onLogin={this.performLogin} />} />
           <main className="main">
             <div>
-          
+
               <br />
             </div>
             <div className="content">
               <Route exact path="/" component={ProductIndex} />
-              <Route exact path="/products/:id" component={ProductDetails} />
+              <Route exact path="/products/:id" component={ProductDetailsFunctional} />
               <Route path="/cart" >
                 <Cart />
               </Route>
               <Route exact path="/payment" component={Payment} />
-              
+
             </div>
           </main>
           <footer className="footer">
