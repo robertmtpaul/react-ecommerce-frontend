@@ -8,7 +8,6 @@ export const calculateGrandTotal = (cart) =>
 
 // Create reducer that manipulates the data layer with actions (the 'action' argument)
 const reducer = (state, action) => {
-  console.log(action);
   switch (
     action.type // CHECK against a number of strings i.e. case
   ) {

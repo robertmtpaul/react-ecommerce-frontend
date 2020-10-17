@@ -25,7 +25,7 @@ class ProductDetails extends React.Component {
         axios
             .get(`${PRODUCTS_URL}/${this.props.match.params.id}`)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 this.setState({ data: data.data });
             })
             .catch(err => console.log(err));

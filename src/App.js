@@ -12,12 +12,13 @@ import Login from "./components/Login";
 import Payment from "./components/Payment";
 import ProductDetails from "./components/ProductDetails";
 
-// import { auth } from './firebase'
-// import { loadStripe } from '@stripe/stripe-js'
-// import { Elements } from "@stripe/stripe-js";
+import { auth } from "./firebase";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
-// const promise = loadStripe
-// ('pk_test_51HUoMRErAewt7RL6NDXnnMAB1Qzx8LEq7baSaXT5fy11YQmsl8A2c2m4mzzeW5O3R4Nynlsdh5srVKDyNkNQ6vZZ00pyGr4vsZ');
+const promise = loadStripe(
+  "pk_test_51HUoMRErAewt7RL6NDXnnMAB1Qzx8LEq7baSaXT5fy11YQmsl8A2c2m4mzzeW5O3R4Nynlsdh5srVKDyNkNQ6vZZ00pyGr4vsZ"
+);
 
 class App extends React.Component {
   state = {
@@ -48,7 +49,7 @@ class App extends React.Component {
 
   // passes as arguments token and user that backend sent
   performLogin = (token, user) => {
-    console.log("app.performLogin", token, user);
+    // console.log("app.performLogin", token, user);
     // setting the axios header with the token sent by the backend
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     // store the current user into state as an object.
@@ -57,7 +58,7 @@ class App extends React.Component {
     localStorage.setItem("token", token);
     // local storage can only set strings, can't set complex items, so needs to have the JSON stringified.
     localStorage.setItem("user", JSON.stringify(user));
-    console.log("user is", user);
+    // console.log("user is", user);
   };
 
   performLogout = (event) => {
@@ -105,12 +106,15 @@ class App extends React.Component {
               </Route>
               <Route exact path="/payment"
                 render={(props) => (
-                  <Payment 
-                  {...props } // Pass in the current user to the payment page using router props
-                currentUser={this.state.user}
-                />
-              )}
+                  <Elements stripe={promise}>
+                    <Payment
+                    {...props} // Pass in the current user to the payment page using router props
+                    currentUser={this.state.user}
+                    />
+                  </Elements>
+                  )}
               />
+              
             </div>
           </main>
           <footer className="footer">

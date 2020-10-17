@@ -1,11 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import '../Payment.css'
-import { useStateValue } from '../StateProvider'
 import CartItem from './CartItem';
+import { useStateValue } from '../StateProvider'
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
 function Payment(props) {
     const [{ cart }, dispatch] = useStateValue();
+
+    const stripe = useStripe();
+    const elements = useElements();
+
+    // const [error, setError] = useState(null);
+    // const [disabled, setDisabled] = useState(true);
+
+    const handleSubmit = event => {
+        // stripe API requests
+    }
 
     return (
         <div className="payment">
@@ -37,7 +48,6 @@ function Payment(props) {
                             name={product.name}
                             id={product.id}
                             price={product.price}
-                            qty={product.quantity}
                             image={product.image}
                             rating={product.rating}
                         />
@@ -46,7 +56,14 @@ function Payment(props) {
 
                 {/* Payment - Payment method */}
                 <div className="payment_section">
-
+                    <div className="payment_title">
+                        <h3>Payment method</h3>
+                    </div>
+                    <div className="payment_details">
+                        <form onSubmit={handleSubmit}>
+                            <CardElement />
+                        </form>
+                    </div>
                 </div>
 
             </div>

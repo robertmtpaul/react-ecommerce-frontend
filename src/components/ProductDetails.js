@@ -102,7 +102,15 @@ export default function ProductDetailsFunctional(props) {
           <li>
             Price: <strong>${product.price}</strong>
           </li>
-          <li>In stock: {product.status}</li>
+          <li>Stock levels: {
+            product.quantity > 20 ? (
+              <p>High</p>
+            ) : (
+              <p>Low</p>
+            )
+            }
+
+          </li>
           <li>
             <select
               onChange={(e) => {

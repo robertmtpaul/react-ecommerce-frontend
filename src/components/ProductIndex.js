@@ -21,11 +21,11 @@ function ProductIndex() {
         // Store the products retrieved by Axios request into state using setProducts
         setProducts(response.data);
       })
-      // throw
       .catch((err) => console.log(err));
   }; // fetchProducts
 
   useEffect(() => {
+    // use hook to run
     fetchProducts();
     console.log("Products mounted!");
   }, []);

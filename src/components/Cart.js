@@ -32,7 +32,7 @@ function Cart() {
             {
               //use .map to go through the array of items in the cart and display to the user the name, qty of the item in the cart, and an image for the item.
               cart?.map((product) => {
-                console.log(product);
+                // console.log(product);
                 return (
                   <CartItem
                     name={product.name}
@@ -47,7 +47,8 @@ function Cart() {
             }
           </div>
         )}
-      </div>{" "}
+      </div>
+      {" "}
       {/* cartItems */}
       {cart.length > 0 && ( // if there are items in the cart, display this:
         <div className="cartTotal">

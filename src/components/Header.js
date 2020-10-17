@@ -8,7 +8,7 @@ import { useStateValue } from "../StateProvider";
 function Header(props) {
   const [{ cart }] = useStateValue();
   // give current state of the cart, then 'dispatch' shoots item to the data layer i.e. cart.
-  console.log(cart);
+  // console.log(cart);
   return (
     <nav className="header">
       <Link to="/">
