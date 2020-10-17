@@ -1,4 +1,4 @@
-# WeShop - React Frontend
+# Mercadillo - React Frontend
 Final project frontend at General Assembly Software Engineering Immersive
 
 ### 
@@ -31,7 +31,7 @@ To view the site, simply visit https://robertmtpaul.github.io/react-ecommerce-fr
 - Log in page does not display when viewing the route page
 
 ### 💡 Future dev plans
+- ✅Refactor of cart using Context API and/or Redux
 - Implementation of Stripe API for taking payment from user
-- Refactor of cart using Context API and/or Redux
 - New user registration
 - Order route to be developed on backend to send product cart on successful payment as order
