@@ -16,7 +16,7 @@ This is an e-commerce web platform which displays products pulled from a Node.js
 - React router
 - Material-UI for icons
 - Node.js/Express backend server using Mongoose & MongoDB to access product and user data
-- JWT for logging in users and creating user sessions
+- JWT/JSON Web Tokens for logging in users and creating user sessions
 - HTML/CSS
 - Axios for making server requests
 
@@ -30,9 +30,8 @@ To view the site, simply visit https://robertmtpaul.github.io/react-ecommerce-fr
 - Shopping cart doesn't clear until page is refreshed
 - Log in page does not display when viewing the route page
 
-### Future dev plans
-- Redesign of site using CSS grid
-- New user registration
-- Refactor of cart using Context API and Redux
-- Order route to be developed on backend to send product cart on successful payment as order
+### 💡 Future dev plans
 - Implementation of Stripe API for taking payment from user
+- Refactor of cart using Context API and/or Redux
+- New user registration
+- Order route to be developed on backend to send product cart on successful payment as order
