@@ -1,120 +1,134 @@
-import React from "react";
+import Axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../ProductDetails.css";
-import axios from "axios";
-import {PRODUCTS_URL} from '../constants'
+import { PRODUCTS_URL } from "../constants";
+import { useStateValue } from "../StateProvider";
 
 let cartQty = 0;
 
-class ProductDetails extends React.Component {
-    state = {
-        data: {
-            name: "",
-            category: "",
-            image: "",
-            price: "",
-            brand: "",
-            rating: "",
-            numReviews: "",
-            description: ""
-        },
-        qty: 1
-    }; // state
+export default function ProductDetailsFunctional(props) {
+  const [product, setProduct] = useState({
+    name: "",
+    category: "",
+    image: "",
+    price: "",
+    brand: "",
+    rating: "",
+    quantity: "",
+    numReviews: "",
+    description: "",
+  });
+  const [{ cart }, dispatch] = useStateValue();
+  const [quantity, setQuantity] = useState(1);
 
-    componentDidMount() {
-        axios
-            .get(`${PRODUCTS_URL}/${this.props.match.params.id}`)
-            .then(data => {
-                console.log(data);
-                this.setState({ data: data.data });
-            })
-            .catch(err => console.log(err));
-    } // componentDidMount
+  const fetchProduct = () => {
+    // use axios to retrieve product with the matching ID passed in by props and store as variable 'data'
+    Axios.get(`${PRODUCTS_URL}/${props.match.params.id}`)
+      // Set the product retrieved by Axios request into state using setProduct.
+      .then((response) => {
+        console.log("matched product", response.data);
+        setProduct(response.data);
+      })
+      .catch((err) => console.log(err));
+  }; // fetchProduct
 
-    addToCart = () => {
-        // console.log('button clicked : contents')
-        // On button click, adds the item from the product details page and passes the ID passed from the parent component App.js
-        this.props.onAddToCart(this.state.data, this.state.qty)
-    }
+  useEffect(() => {
+    fetchProduct();
+    console.log("Product component mounted!");
+    // create function that runs and grabs data from API
+  }, [props.match]);
 
-    checkCart() {
-        // console.log('check cart!!');
-        const productId = this.props.match.params.id
-        this.props.cart.forEach(cartProduct => {
-            // check productId's value of each obj against current id in state
-            console.log("product being compared:", cartProduct);
-            if (cartProduct.productId === productId) {
-                cartQty += cartProduct.qty;
-            }
-        });
-    }
+  //   Axios
+  //     .get()
+  //     .then((response) => {
+  //       setProduct(response.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [props.match]);
 
-    cartClick() {
-        this.addToCart();
-        this.checkCart();
-    }
+  // function checkCart() {
+  //   const productId = props.match.params.id;
+  //   props.cart.forEach((cartProduct) => {
+  //     if (cartProduct.productId === productId) {
+  //       cartQty += cartProduct.qty;
+  //     }
+  //   });
+  // }
 
-    render() {
+  const addToCart = () => {
+    // Add item selected to cart...
+    dispatch({
+      type: "ADD_TO_CART",
+      item: {
+        product: product._id,
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        quantity: product.quantity,
+        rating: product.rating,
+      },
+    });
+  };
 
-        return (
-            <div className="details">
-                <div className="back">
-                    <Link to="/">Back</Link>
-                </div>
-                <div className="details">
-                    <div className="details-image">
-                        <img src={this.state.data.image} alt={this.state.data.name} />
-                    </div>
-                    <div className="details-info">
-                        <ul>
-                            <li>
-                                <h4>{this.state.data.name}</h4>
-                            </li>
-                            <li>
-                                {this.state.data.rating} Stars ({this.state.data.numReviews}{" "}
-                Reviews )
-              </li>
-                            <li>
-                                <strong>Price: ${this.state.data.price} </strong>
-                            </li>
-                            <li>
-                                <p>Description:</p>
-                                {this.state.data.description}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="details-action">
-                    {cartQty > 0 && <div>You have this amount in cart....{cartQty}</div>}
-                    <ul>
-                        <li>
-                            Price: <strong>${this.state.data.price}</strong>
-                        </li>
-                        <li>Status: {this.state.data.status}</li>
-                        <li>
-                            {/* when button clicked, uses event to save quantity into state */}
-              Qty:{" "}
-                            <select
-                                onChange={e => this.setState({ qty: parseInt(e.target.value) })}
-                            >
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </li>
-                        <li>
-                            {/* gives name of the function to run later on time of click */}
-                            <button className="button" onClick={() => this.cartClick()}>
-                                Add to cart
-              </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        );
-    }
-} // ProductDetails class
+  function cartClick() {
+    addToCart();
+    // checkCart();
+  }
 
-export default ProductDetails;
+  return (
+    <div className="details">
+      <Link className="back" to="/">
+        Back
+      </Link>
+      <div className="details">
+        <div className="details-image">
+          <img src={product.image} alt={product.name} />
+        </div>
+        <div className="details-info">
+          <ul>
+            <li>
+              <h4>{product.name}</h4>
+            </li>
+            <li>
+              {product.rating} Stars ({product.numReviews} Reviews )
+            </li>
+            <li>
+              <strong>Price: ${product.price} </strong>
+            </li>
+            <li>
+              <p>Description:</p>
+              {product.description}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="details-action">
+        {/* {cartQty > 0 && <div>You have this amount in cart....{cartQty}</div>} */}
+        <ul>
+          <li>
+            Price: <strong>${product.price}</strong>
+          </li>
+          <li>Status: {product.status}</li>
+          <li>
+            <select
+              onChange={(e) => {
+                setQuantity(parseInt(e.target.value));
+              }}
+            >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </li>
+          <li>
+            <button className="button" onClick={cartClick}>
+              Add to cart
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}

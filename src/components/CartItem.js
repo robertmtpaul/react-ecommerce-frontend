@@ -4,7 +4,7 @@ import '../CartItem.css'
 import { useStateValue } from '../StateProvider'
 
 function CartItem({ name, id, price, image, qty, rating }) {
-    const [{ }, dispatch] = useStateValue();
+    const [{ cart }, dispatch] = useStateValue();
     console.log(name, id, price, image, qty, rating)
     const removeFromCart = () =>  {
         // remove selected item from cart
