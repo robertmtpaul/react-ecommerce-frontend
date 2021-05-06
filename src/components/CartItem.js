@@ -19,7 +19,7 @@ function CartItem({ name, id, price, image, qty, rating }) {
       <img src={image} className="cartItem_image" alt={name} />
       <div className="cartItem_details">
         <p className="cartItem_name">{name}</p>
-        <p>in stock: {qty}</p>
+        <p>In stock: {qty}</p>
         <p className="cartItem_price">
           <small>$</small>
           <strong>{price}</strong>
